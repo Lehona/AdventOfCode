@@ -8,4 +8,4 @@ deps/
 exampleProject
 testData
 .DS_Store
-aoc1/target/
+*/target/
