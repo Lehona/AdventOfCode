@@ -20,7 +20,7 @@ fn part_two(input: &str) {
         .map(|l| l.parse::<i64>().expect("illegal line"))
         .collect();
 
-    let mut previous_freqs = ::std::collections::HashMap::new();
+    let mut seen = ::std::collections::HashSet::new();
 
     let mut current = 0;
 
@@ -28,14 +28,12 @@ fn part_two(input: &str) {
         for i in &as_numbers {
             current += i;
 
-            let occured_previously = previous_freqs.entry(current).or_insert(false);
+            let occured_previously = !seen.insert(current);
 
-            if *occured_previously {
+            if occured_previously {
                 println!("The result of puzzle 2 is: {}", current);
                 return;
-            } else {
-                *occured_previously = true;
-            }
+            };
         }
     }
 }
