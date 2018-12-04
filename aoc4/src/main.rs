@@ -11,10 +11,7 @@ fn main() {
         .map(|l| entry(CompleteStr(l)).unwrap().1)
         .collect();
 
-    println!("{:#?}", entries);
-
     entries.sort_unstable_by(|a, b| a.time.cmp(&b.time));
-    println!("{:#?}", entries);
 
     let mut times = HashMap::new();
     let mut intervals = HashMap::new();
