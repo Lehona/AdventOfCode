@@ -16,13 +16,11 @@ fn main() {
     println!("The shorted possible polymer is of length: {}", len);
 }
 
-fn clean(polymers: Vec<u8>, b: u8) -> Vec<u8> {
+fn clean(mut polymers: Vec<u8>, b: u8) -> Vec<u8> {
     let lower = b.to_ascii_lowercase();
     let upper = b.to_ascii_uppercase();
+    polymers.retain(|polymer| *polymer != upper && *polymer != lower);
     polymers
-        .into_iter()
-        .filter(|polymer| *polymer != upper && *polymer != lower)
-        .collect()
 }
 
 fn fully_react(polymers: Vec<u8>) -> Vec<u8> {
